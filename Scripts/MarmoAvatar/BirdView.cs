@@ -49,18 +49,23 @@ public class BirdView : MonoBehaviour
         transform.position = agent.transform.position;
     }
 
-    Vector2 calcMousePos(Vector2 event_pos)
+    Vector2 calcMousePos(Vector2 event_pos, out bool click_succ)
     {
         if (ui_panel)
         {
             Debug.Log(m_camera.pixelHeight);
+            float yratio =  (Screen.height - event_pos.y) / ui_panel.rectTransform.rect.height;
+            click_succ = (yratio < 1 && yratio > 0);
             return new Vector2(
                 event_pos.x,
-                m_camera.pixelHeight / ui_panel.rectTransform.rect.height * (Screen.height - event_pos.y));
+                m_camera.pixelHeight * yratio);
         }
-        else return new Vector2(
+        else {
+            click_succ = true;
+            return new Vector2(
                 event_pos.x,
                 m_camera.pixelHeight - event_pos.y);
+        }
     }
 
     void OnGUI()
@@ -68,7 +73,10 @@ public class BirdView : MonoBehaviour
         Event curr_event = Event.current;
         if (curr_event.type != EventType.MouseDown && curr_event.type != EventType.TouchDown)
             return;
-        Vector2 mouse_pos = calcMousePos(curr_event.mousePosition);
+        bool click_succ;
+        Vector2 mouse_pos = calcMousePos(curr_event.mousePosition, out click_succ);
+        if (!click_succ) return;
+
         Vector3 pt = m_camera.ScreenToWorldPoint(
             new Vector3(mouse_pos.x, mouse_pos.y, 1));
 
