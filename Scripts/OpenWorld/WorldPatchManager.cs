@@ -18,7 +18,7 @@ public class WorldPatchManager : MonoBehaviour
     [SerializeField] GameObject agent;
     // wherever agent goes, render around agent
     // if agent is too far away from origin, reset origin
-    Vector3 offset_in_map;
+    public Vector3 offset_in_map { get;  private set; }
 
     // object pool
     ObjectPool<GameObject> patch4x4_pool;
@@ -81,8 +81,8 @@ public class WorldPatchManager : MonoBehaviour
 
     void reOrigin()
     {
-        offset_in_map += agent.transform.position;
-        offset_in_map.y = 0; // no up-down allowed
+        offset_in_map += Vector3.right * agent.transform.position.x +
+                         Vector3.forward * agent.transform.position.z; // no up-down allowed
 
         // minus agent transform
         for (int i = -active_patch.padding; i < active_patch.padding; i++)

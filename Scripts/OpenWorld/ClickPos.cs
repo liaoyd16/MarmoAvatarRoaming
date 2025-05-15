@@ -10,11 +10,13 @@ public class ClickPos : MonoBehaviour
     [SerializeField] float twinkle_radius;
     float twinkle_downcnt;
     public UnityEvent<TaskEvent> onClickPosListener;
+    WorldPatchManager worldPatchManager;
 
     void Start()
     {
         transform.localScale = new Vector3(0, 0, 0);
         twinkle_downcnt = 0f;
+        worldPatchManager = GameObject.Find("WorldPatchManager").GetComponent<WorldPatchManager>();
     }
 
     public void onClickPos(Vector3 click_pos)
@@ -22,7 +24,8 @@ public class ClickPos : MonoBehaviour
         transform.position = click_pos;
         twinkle_downcnt = twinkle_duration;
         StartCoroutine(Twinkle());
-        onClickPosListener.Invoke(new ClickPosEvent(click_pos));
+        onClickPosListener.Invoke(
+            new ClickPosEvent(click_pos + worldPatchManager.offset_in_map));
     }
 
     IEnumerator Twinkle()
