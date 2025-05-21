@@ -53,7 +53,7 @@ public class BirdView : MonoBehaviour
     {
         if (ui_panel)
         {
-            Debug.Log(m_camera.pixelHeight);
+            // Debug.Log(m_camera.pixelHeight);
             float yratio =  (Screen.height - event_pos.y) / ui_panel.rectTransform.rect.height;
             click_succ = (yratio < 1 && yratio > 0);
             return new Vector2(

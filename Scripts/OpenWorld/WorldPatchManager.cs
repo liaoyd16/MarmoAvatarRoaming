@@ -12,13 +12,15 @@ public class WorldPatchManager : MonoBehaviour
     [SerializeField] float re_origin_thres = 100;
 
     // secondly, make a torus
-    Torus<GameObject> active_patch;
-    [SerializeField] Vector3 active_patch_pos;
+    public Torus<GameObject> active_patch;
+    [SerializeField] Vector3 active_patch_pos; // for debug
 
     [SerializeField] GameObject agent;
+
+    [SerializeField] string prefab_name;
     // wherever agent goes, render around agent
     // if agent is too far away from origin, reset origin
-    public Vector3 offset_in_map { get;  private set; }
+    public Vector3 offset_in_map { get; private set; }
 
     // object pool
     ObjectPool<GameObject> patch4x4_pool;
@@ -68,7 +70,7 @@ public class WorldPatchManager : MonoBehaviour
 
     GameObject createFunc()
     {
-        GameObject p = Instantiate(Resources.Load<GameObject>("Prefabs/Patch4x4"), transform.position + Vector3.down * 100, Quaternion.identity, this.transform);
+        GameObject p = Instantiate(Resources.Load<GameObject>(prefab_name), transform.position + Vector3.down * 100, Quaternion.identity, this.transform);
         return p;
     }
 
@@ -111,8 +113,8 @@ public class WorldPatchManager : MonoBehaviour
             offset_in_map;
 
         // if map says certain object are on the floor
-        Debug.LogFormat("at patch {0},{1} there are {2} trees",
-                ixmap, izmap, m_map.patch_info.idx); // totodo: attach a child object to patch
+        // Debug.LogFormat("at patch {0},{1} there are {2} trees",
+        //         ixmap, izmap, m_map.patch_info.idx); // totodo: attach a child object to patch
 
         // now, add patch_floor to active patch
         // but first do release job?

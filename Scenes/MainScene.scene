@@ -626,6 +626,18 @@ PrefabInstance:
       propertyPath: agent
       value: 
       objectReference: {fileID: 1364222686}
+    - target: {fileID: 1491109095078068863, guid: 11cd7c13c21a2bd3bb863a3aa1f6eeba, type: 3}
+      propertyPath: padding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491109095078068863, guid: 11cd7c13c21a2bd3bb863a3aa1f6eeba, type: 3}
+      propertyPath: patch_width
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491109095078068863, guid: 11cd7c13c21a2bd3bb863a3aa1f6eeba, type: 3}
+      propertyPath: prefab_name
+      value: Prefabs/HexArray
+      objectReference: {fileID: 0}
     - target: {fileID: 3144338639325061187, guid: 11cd7c13c21a2bd3bb863a3aa1f6eeba, type: 3}
       propertyPath: m_Name
       value: WorldPatchManager
@@ -682,6 +694,14 @@ PrefabInstance:
     - target: {fileID: 434450320502903886, guid: bbcfb22e899711e90a459a32a16a3eaa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401025501875472470, guid: bbcfb22e899711e90a459a32a16a3eaa, type: 3}
+      propertyPath: onClickPosListener.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7401025501875472470, guid: bbcfb22e899711e90a459a32a16a3eaa, type: 3}
+      propertyPath: onClickPosListener.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8396960529831948001, guid: bbcfb22e899711e90a459a32a16a3eaa, type: 3}
       propertyPath: m_Name
