@@ -47,6 +47,8 @@ public class BirdView : MonoBehaviour
     void Update()
     {
         transform.position = agent.transform.position;
+
+        m_camera_obj.transform.localPosition = cam_backoff;
     }
 
     Vector2 calcMousePos(Vector2 event_pos, out bool click_succ)
